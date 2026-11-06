@@ -1,0 +1,98 @@
+/* ============================================================
+   NOSSO PRIMEIRO CAPÍTULO — RESPONSIVE.CSS
+   Mobile-first não foi usado na base (desktop é a base em
+   style.css); este arquivo adapta para telas menores,
+   priorizando a experiência no celular (prioridade do projeto).
+============================================================ */
+
+/* -------------------- Tablets (≤ 980px) -------------------- */
+@media (max-width: 980px) {
+  .gallery { columns: 2 220px; }
+
+  .timeline::before { left: 22px; }
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding-left: 3.2rem;
+    padding-right: 0.5rem;
+  }
+  .timeline-item:nth-child(odd) .timeline-item__dot,
+  .timeline-item:nth-child(even) .timeline-item__dot {
+    left: 17px;
+    right: auto;
+  }
+}
+
+/* -------------------- Navegação mobile (≤ 760px) -------------------- */
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: flex;
+  }
+  .nav__list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(78vw, 320px);
+    background: var(--color-offwhite);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.8rem;
+    padding: var(--space-xl) var(--space-md);
+    transform: translateX(100%);
+    box-shadow: -18px 0 40px rgba(51,29,29,0.12);
+  }
+  .nav__list.is-open { transform: translateX(0); }
+  .nav__list a { color: var(--color-text) !important; font-size: 1.1rem; }
+
+  .nav__toggle.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav__toggle.is-active span:nth-child(2) { opacity: 0; }
+  .nav__toggle.is-active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+}
+
+/* -------------------- Telas pequenas (≤ 600px) -------------------- */
+@media (max-width: 600px) {
+  :root {
+    --space-lg: 3rem;
+    --space-xl: 4.5rem;
+  }
+
+  .hero__content { padding-bottom: 3.2rem; }
+  .hero__title { font-size: clamp(2.1rem, 9vw, 2.8rem); }
+
+  .counter { gap: 0.6rem; }
+  .counter__unit { min-width: 3.2rem; }
+  .counter__divider { display: none; }
+
+  .gallery { columns: 1 1fr; }
+
+  .player__main { flex-direction: column; align-items: flex-start; }
+  .player__cover { width: 100%; height: 160px; }
+  .player__volume { width: 90px; }
+
+  .cards { grid-template-columns: 1fr 1fr; }
+
+  .letter { padding: var(--space-md) 1.25rem; }
+
+  .to-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+}
+
+/* -------------------- Telas muito pequenas (≤ 390px) -------------------- */
+@media (max-width: 390px) {
+  .cards { grid-template-columns: 1fr; }
+  .nav__brand { font-size: 1.2rem; }
+}
+
+/* -------------------- Telas grandes (≥ 1440px) -------------------- */
+@media (min-width: 1440px) {
+  .hero__content { max-width: 880px; }
+  .gallery { columns: 3 300px; }
+}
+
+/* Impede rolagem horizontal indesejada em qualquer largura */
+html, body { max-width: 100%; overflow-x: hidden; }

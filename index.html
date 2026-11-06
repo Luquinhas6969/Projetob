@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso primeiro capítulo</title>
+<meta name="description" content="Um álbum digital — nossa história, um mês de namoro.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Lucide icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide-static/0.462.0/umd/lucide.min.js" defer></script>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Indicador de progresso da página -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Navegação discreta -->
+<nav class="nav" id="siteNav" aria-label="Navegação principal">
+  <a href="#hero" class="nav__brand" id="navBrand">N&C</a>
+  <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav__list" id="navList">
+    <li><a href="#historia" data-nav>História</a></li>
+    <li><a href="#galeria" data-nav>Galeria</a></li>
+    <li><a href="#trilha" data-nav>Trilha</a></li>
+    <li><a href="#pequenas-coisas" data-nav>Sobre você</a></li>
+    <li><a href="#carta" data-nav>Carta</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ============================================================
+       SEÇÃO 1 — ABERTURA / HERO
+  ============================================================ -->
+  <section id="hero" class="hero">
+    <div class="hero__media">
+      <img id="heroImage" class="hero__image" src="" alt="" data-placeholder-label="fotografia principal">
+      <div class="hero__scrim"></div>
+    </div>
+    <div class="hero__content">
+      <p class="hero__eyebrow" id="heroDate"></p>
+      <h1 class="hero__title" id="heroTitle"></h1>
+      <p class="hero__subtitle" id="heroSubtitle"></p>
+      <a href="#historia" class="btn btn--ghost-light" id="heroButton"></a>
+    </div>
+    <button class="hero__scroll-cue" id="scrollCue" aria-label="Rolar para baixo">
+      <span></span>
+    </button>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 2 — NOSSO TEMPO JUNTOS
+  ============================================================ -->
+  <section class="counter-section" aria-labelledby="counterHeading">
+    <h2 id="counterHeading" class="section-eyebrow">Nosso tempo juntos</h2>
+    <div class="counter" id="counter" role="timer" aria-live="off">
+      <div class="counter__unit">
+        <span class="counter__value" id="countDays">00</span>
+        <span class="counter__label">dias</span>
+      </div>
+      <div class="counter__divider">·</div>
+      <div class="counter__unit">
+        <span class="counter__value" id="countHours">00</span>
+        <span class="counter__label">horas</span>
+      </div>
+      <div class="counter__divider">·</div>
+      <div class="counter__unit">
+        <span class="counter__value" id="countMinutes">00</span>
+        <span class="counter__label">min</span>
+      </div>
+      <div class="counter__divider">·</div>
+      <div class="counter__unit">
+        <span class="counter__value" id="countSeconds">00</span>
+        <span class="counter__label">seg</span>
+      </div>
+    </div>
+    <p class="counter__phrase" id="counterPhrase"></p>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 3 — NOSSA HISTÓRIA / LINHA DO TEMPO
+  ============================================================ -->
+  <section id="historia" class="timeline-section">
+    <h2 class="section-eyebrow">Nossa história</h2>
+    <h3 class="section-title">Capítulo a capítulo</h3>
+    <div class="timeline" id="timeline">
+      <!-- Itens gerados dinamicamente a partir de config.js -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 4 — GALERIA
+  ============================================================ -->
+  <section id="galeria" class="gallery-section">
+    <h2 class="section-eyebrow">Nossa galeria</h2>
+    <h3 class="section-title">Fragmentos guardados</h3>
+    <div class="gallery" id="gallery">
+      <!-- Itens gerados dinamicamente a partir de config.js -->
+    </div>
+  </section>
+
+  <!-- Lightbox da galeria -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotografia ampliada" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Foto anterior">&#8249;</button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImage" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Próxima foto">&#8250;</button>
+  </div>
+
+  <!-- ============================================================
+       SEÇÃO 5 — NOSSA TRILHA SONORA
+  ============================================================ -->
+  <section id="trilha" class="music-section">
+    <h2 class="section-eyebrow">Nossa trilha sonora</h2>
+    <h3 class="section-title">As canções da gente</h3>
+
+    <div class="player" id="player">
+      <div class="player__empty" id="playerEmpty" hidden>
+        <p>Nenhuma música configurada ainda.<br>Adicione arquivos em <code>assets/music/</code> e edite a playlist em <code>config.js</code>.</p>
+      </div>
+
+      <div class="player__main" id="playerMain" hidden>
+        <div class="player__cover">
+          <img id="playerCoverImage" src="" alt="" hidden>
+          <div class="player__cover-fallback" id="playerCoverFallback"></div>
+        </div>
+        <div class="player__info">
+          <p class="player__song" id="playerSong"></p>
+          <p class="player__artist" id="playerArtist"></p>
+
+          <div class="player__progress-row">
+            <span class="player__time" id="playerCurrentTime">0:00</span>
+            <input type="range" class="player__progress" id="playerProgress" value="0" min="0" max="100" step="0.1" aria-label="Progresso da música">
+            <span class="player__time" id="playerDuration">0:00</span>
+          </div>
+
+          <div class="player__controls">
+            <button class="player__btn" id="playerPrev" aria-label="Música anterior">
+              <i data-lucide="skip-back"></i>
+            </button>
+            <button class="player__btn player__btn--main" id="playerPlay" aria-label="Tocar">
+              <i data-lucide="play"></i>
+            </button>
+            <button class="player__btn" id="playerNext" aria-label="Próxima música">
+              <i data-lucide="skip-forward"></i>
+            </button>
+            <div class="player__volume">
+              <i data-lucide="volume-2"></i>
+              <input type="range" id="playerVolume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="player__list" id="playerList"></ul>
+    </div>
+    <audio id="audioElement" preload="metadata"></audio>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 6 — PEQUENAS COISAS QUE AMO EM VOCÊ
+  ============================================================ -->
+  <section id="pequenas-coisas" class="cards-section">
+    <h2 class="section-eyebrow">Pequenas coisas</h2>
+    <h3 class="section-title">Que amo em você</h3>
+    <div class="cards" id="cards">
+      <!-- Itens gerados dinamicamente a partir de config.js -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 7 — CARTA ESPECIAL
+  ============================================================ -->
+  <section id="carta" class="letter-section">
+    <div class="envelope" id="envelope">
+      <div class="envelope__seal" aria-hidden="true"></div>
+      <p class="envelope__hint" id="envelopeTitle"></p>
+      <button class="btn btn--ghost" id="envelopeButton">Abrir minha carta</button>
+    </div>
+    <article class="letter" id="letter" hidden>
+      <p class="letter__salutation" id="letterSalutation"></p>
+      <div class="letter__body" id="letterBody"></div>
+      <p class="letter__signature" id="letterSignature"></p>
+      <button class="letter__close" id="letterClose">Fechar carta</button>
+    </article>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 8 — NOSSO PRÓXIMO CAPÍTULO
+  ============================================================ -->
+  <section class="finale">
+    <div class="finale__media">
+      <img id="finaleImage" class="finale__image" src="" alt="" data-placeholder-label="fotografia final">
+      <div class="finale__scrim"></div>
+    </div>
+    <div class="finale__content">
+      <p class="finale__eyebrow" id="finaleDate"></p>
+      <p class="finale__phrase" id="finalePhrase"></p>
+      <a href="#hero" class="btn btn--ghost-light" id="finaleButton"></a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 9 — SURPRESA ESCONDIDA
+  ============================================================ -->
+  <section class="surprise" id="surpriseSection" hidden>
+    <button class="surprise__trigger" id="surpriseTrigger"></button>
+    <div class="surprise__message" id="surpriseMessage" hidden></div>
+  </section>
+
+</main>
+
+<!-- Botão de voltar ao topo -->
+<button class="to-top" id="toTopBtn" aria-label="Voltar ao topo" hidden>
+  <i data-lucide="arrow-up"></i>
+</button>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/music.js"></script>
+<script src="js/interactions.js"></script>
+</body>
+</html>

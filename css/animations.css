@@ -1,0 +1,95 @@
+/* ============================================================
+   NOSSO PRIMEIRO CAPÍTULO — ANIMATIONS.CSS
+============================================================ */
+
+/* -------------------- Entrada ao rolar -------------------- */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-animate="fade"] { transform: none; }
+
+/* Atraso em cascata para listas de itens */
+[data-animate-delay="1"] { transition-delay: 90ms; }
+[data-animate-delay="2"] { transition-delay: 180ms; }
+[data-animate-delay="3"] { transition-delay: 270ms; }
+[data-animate-delay="4"] { transition-delay: 360ms; }
+
+/* -------------------- Hero: entrada orquestrada única -------------------- */
+.hero__eyebrow, .hero__title, .hero__subtitle, .hero__content .btn {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: heroReveal 1000ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero__eyebrow { animation-delay: 300ms; }
+.hero__title { animation-delay: 480ms; }
+.hero__subtitle { animation-delay: 680ms; }
+.hero__content .btn { animation-delay: 880ms; }
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollCue {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { opacity: 0.3; }
+  100% { transform: translateY(16px); opacity: 0; }
+}
+
+/* -------------------- Lightbox -------------------- */
+.lightbox__figure {
+  animation: lightboxIn 320ms ease;
+}
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* -------------------- Carta -------------------- */
+.envelope {
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.envelope.is-hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  position: absolute;
+}
+.letter {
+  animation: letterReveal 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes letterReveal {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* -------------------- Surpresa -------------------- */
+.surprise__message {
+  animation: letterReveal 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* -------------------- Nav mobile -------------------- */
+.nav__list {
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* -------------------- Acessibilidade: reduced motion -------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-animate] { opacity: 1; transform: none; }
+  .hero__eyebrow, .hero__title, .hero__subtitle, .hero__content .btn {
+    opacity: 1; transform: none; animation: none;
+  }
+}
