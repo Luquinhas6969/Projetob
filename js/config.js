@@ -151,6 +151,26 @@ const SITE_CONFIG = {
       imagem: "assets/images/gallery/fotol-06.jpg",
       legenda: "Voce disse que gosta dessa foto",
       orientacao: "paisagem"
+    },
+    {
+      imagem: "assets/images/gallery/foto-07.jpg",
+      legenda: "Krepioca com meu amor!",
+      orientacao: "paisagem"
+    },
+    {
+      imagem: "assets/images/gallery/foto-08.jpg",
+      legenda: "Comendo macarrão feito por eu",
+      orientacao: "paisagem"
+    },
+    {
+      imagem: "assets/images/gallery/foto-09.jpg",
+      legenda: "Açaí com meu amor pós ENEM",
+      orientacao: "paisagem"
+    },
+    {
+      imagem: "assets/images/gallery/foto-10.jpg",
+      legenda: "Noite Agradável com meu amor",
+      orientacao: "paisagem"
     }
     // Copie o bloco acima para adicionar mais fotos.
   ],
